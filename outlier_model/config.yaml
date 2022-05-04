@@ -1,0 +1,63 @@
+# Package Overview
+package_name: outlier_model
+
+# Data Files
+training_data_file: train.csv
+test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (sale price)
+target: Unusual
+
+pipeline_name: outlier_model
+pipeline_save_file: outlier_model_output_v
+
+# set train/test split
+test_size: 0.2
+
+# to set the random seed
+random_state: 0
+
+# power transform
+exp: 0.5
+
+# imputation method
+imputation_method: mean
+
+# Hyper-parameters
+learning_rate: 0.02
+n_estimators: 600
+objective: binary:logistic
+nthread: 1
+subsample: 1.0
+eval_metric: logloss
+min_child_weight: 5
+max_depth: 10
+gamma: 2
+colsample_bytree: 0.8
+
+power_features:
+  - PRBUsageUL
+  - PRBUsageDL
+  - meanThr_DL
+  - meanThr_UL
+  - maxThr_DL
+  - maxThr_UL
+
+mean_missing_features:
+  - maxUE_DL
+  - maxUE_UL
+  - maxUE_UL+DL
+
+features:
+  - PRBUsageUL
+  - PRBUsageDL
+  - meanThr_DL
+  - meanThr_UL
+  - maxThr_DL
+  - maxThr_UL
+  - meanUE_DL
+  - meanUE_UL
+  - maxUE_DL
+  - maxUE_UL
+  - maxUE_UL+DL
